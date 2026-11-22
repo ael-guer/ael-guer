@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 860" width="1000" height="860" role="img" aria-label="Ali El-Guerch profile sections: about, tech stack, education, focus areas, philosophy">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050507"/>
+      <stop offset="0.6" stop-color="#0d0609"/>
+      <stop offset="1" stop-color="#1a0508"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8a0f16" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8a0f16" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff2a3d" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff2a3d" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#ff2a3d" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 38px; letter-spacing: 5px; fill: #f2f2f4; }
+    .sub   { font-family: 'Courier New', Courier, monospace; font-size: 14px; letter-spacing: 2px; fill: #8b8b96; }
+    .h     { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 14px; letter-spacing: 3px; fill: #ff2a3d; }
+    .b     { font-family: 'Courier New', Courier, monospace; font-size: 14px; fill: #d6d6dc; }
+    .bt    { font-family: 'Courier New', Courier, monospace; font-size: 14px; font-weight: 700; fill: #f2f2f4; }
+    .small { font-family: 'Courier New', Courier, monospace; font-size: 12px; fill: #8b8b96; letter-spacing: 1px; }
+    .pill  { fill: #14060a; stroke: #ff2a3d; stroke-width: 1.2; }
+    .pilltxt { font-family: 'Courier New', Courier, monospace; font-size: 13px; fill: #f2f2f4; text-anchor: middle; }
+    .fnode { font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: 700; fill: #f2f2f4; text-anchor: middle; }
+    .card  { fill: #0c0709; stroke: #ff2a3d; stroke-width: 1.4; animation: edge 3s ease-in-out infinite; }
+    .node  { fill: #120608; stroke: #ff2a3d; stroke-width: 1.5; }
+    .ln    { stroke: #ff2a3d; stroke-width: 1.5; stroke-opacity: 0.7; fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; pathLength: 1; animation: draw 1.4s ease forwards; }
+    .quote { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 22px; fill: #f2f2f4; }
+    .in    { opacity: 0; animation: fade 0.8s ease-out forwards; }
+    .pop   { opacity: 0; transform-box: fill-box; transform-origin: center; animation: pop 0.5s ease-out forwards; }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: beat 2.2s ease-in-out infinite; }
+    .float { animation: float 4s ease-in-out infinite; }
+    .sweep { animation: sweep 4s ease-in-out infinite; transform-box: fill-box; }
+    .cur   { animation: blink 1s step-end infinite; }
+
+    @keyframes fade  { to { opacity: 1; } }
+    @keyframes pop   { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    @keyframes draw  { to { stroke-dashoffset: 0; } }
+    @keyframes beat  { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.45; } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    @keyframes sweep { 0% { transform: translateX(-520px); } 100% { transform: translateX(1000px); } }
+    @keyframes edge { 0%, 100% { stroke-opacity: 0.4; } 50% { stroke-opacity: 1; } }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+
+  <rect width="1000" height="860" fill="url(#bg)"/>
+  <ellipse cx="500" cy="150" rx="460" ry="150" fill="url(#halo)"/>
+  <rect class="sweep" x="0" y="0" width="200" height="860" fill="url(#shine)"/>
+
+  <text class="title in" x="500" y="80" text-anchor="middle" style="animation-delay:0.2s">ALI EL-GUERCH</text>
+  <text class="sub in" x="500" y="104" text-anchor="middle" style="animation-delay:0.6s">AEL-GUER &#183; 1337 &#183; 42 NETWORK &#183; 2026</text>
+
+  <!-- CARD 1: ABOUT -->
+  <rect class="card" x="40" y="140" width="440" height="230" rx="10"/>
+  <text class="h in" x="62" y="168" style="animation-delay:0.5s">&#9670; ABOUT ME</text>
+  <line x1="62" y1="180" x2="458" y2="180" stroke="#ff2a3d" stroke-opacity="0.4"/>
+  <text class="b in" x="62" y="206" style="animation-delay:0.7s">Software engineering student at 1337.</text>
+  <text class="b in" x="62" y="230" style="animation-delay:0.8s">I care about clean code, deep fundamentals,</text>
+  <text class="b in" x="62" y="254" style="animation-delay:0.9s">and building things that work the first time.</text>
+  <text class="b in" x="62" y="290" style="animation-delay:1.1s">I love drawing anime, video editing</text>
+  <text class="b in" x="62" y="314" style="animation-delay:1.15s">and designing.</text>
+  <text class="small in" x="62" y="350" style="animation-delay:1.3s">$ status: learning, always</text>
+
+  <!-- CARD 2: TECH STACK -->
+  <rect class="card" x="520" y="140" width="440" height="230" rx="10" style="animation-delay:0.5s"/>
+  <text class="h in" x="542" y="168" style="animation-delay:0.6s">&#9670; TECH STACK</text>
+  <line x1="542" y1="180" x2="938" y2="180" stroke="#ff2a3d" stroke-opacity="0.4"/>
+  <g class="pop" style="animation-delay:0.8s"><g class="float"><rect class="pill" x="542" y="200" width="70" height="34" rx="17"/><text class="pilltxt" x="577" y="222">C</text></g></g>
+  <g class="pop" style="animation-delay:0.9s"><g class="float"><rect class="pill" x="622" y="200" width="100" height="34" rx="17"/><text class="pilltxt" x="672" y="222">Python</text></g></g>
+  <g class="pop" style="animation-delay:1.0s"><g class="float"><rect class="pill" x="732" y="200" width="84" height="34" rx="17"/><text class="pilltxt" x="774" y="222">Linux</text></g></g>
+  <g class="pop" style="animation-delay:1.1s"><g class="float"><rect class="pill" x="826" y="200" width="64" height="34" rx="17"/><text class="pilltxt" x="858" y="222">Git</text></g></g>
+  <g class="pop" style="animation-delay:1.2s"><g class="float"><rect class="pill" x="542" y="246" width="64" height="34" rx="17"/><text class="pilltxt" x="574" y="268">AI</text></g></g>
+  <g class="pop" style="animation-delay:1.3s"><g class="float"><rect class="pill" x="616" y="246" width="90" height="34" rx="17"/><text class="pilltxt" x="661" y="268">Design</text></g></g>
+  <g class="pop" style="animation-delay:1.4s"><g class="float"><rect class="pill" x="716" y="246" width="152" height="34" rx="17"/><text class="pilltxt" x="792" y="268">Video editing</text></g></g>
+  <text class="small in" x="542" y="318" style="animation-delay:1.7s">tools I use to build, see, and edit</text>
+  <text class="small in" x="542" y="340" style="animation-delay:1.8s">(code, systems, design, and video)</text>
+
+  <!-- CARD 3: EDUCATION (timeline) -->
+  <rect class="card" x="40" y="400" width="440" height="250" rx="10" style="animation-delay:1s"/>
+  <text class="h in" x="62" y="428" style="animation-delay:0.7s">&#9670; FORMATION</text>
+  <line x1="62" y1="440" x2="458" y2="440" stroke="#ff2a3d" stroke-opacity="0.4"/>
+  <line class="ln" pathLength="1" x1="82" y1="470" x2="82" y2="608"/>
+
+  <circle cx="82" cy="470" r="6" fill="none" stroke="#ff2a3d" stroke-width="1.5"/>
+  <text class="bt in" x="104" y="474" style="animation-delay:0.9s">Baccalauréat PC</text>
+  <text class="small in" x="104" y="492" style="animation-delay:1s">Physique-Chimie</text>
+
+  <circle cx="82" cy="516" r="6" fill="none" stroke="#ff2a3d" stroke-width="1.5"/>
+  <text class="bt in" x="104" y="520" style="animation-delay:1.1s">Baccalauréat SMA</text>
+  <text class="small in" x="104" y="538" style="animation-delay:1.2s">Sciences Mathématiques A</text>
+
+  <circle cx="82" cy="562" r="6" fill="none" stroke="#ff2a3d" stroke-width="1.5"/>
+  <text class="bt in" x="104" y="566" style="animation-delay:1.3s">Licence en Gestion d'Entreprise</text>
+  <text class="small in" x="104" y="584" style="animation-delay:1.4s">Université et année : à compléter</text>
+
+  <circle class="pulse" cx="82" cy="608" r="7" fill="#ff2a3d" filter="url(#glow)"/>
+  <text class="bt in" x="104" y="612" style="animation-delay:1.5s">1337 · 42 Network</text>
+  <text class="small in" x="104" y="630" style="animation-delay:1.6s">Tronc commun, promotion 2026</text>
+
+  <!-- CARD 4: FOCUS AREAS (6 nodes on one circle, radius 72, around the center) -->
+  <rect class="card" x="520" y="400" width="440" height="250" rx="10" style="animation-delay:1.5s"/>
+  <text class="h in" x="542" y="428" style="animation-delay:0.8s">&#9670; FOCUS AREAS</text>
+  <line x1="542" y1="440" x2="938" y2="440" stroke="#ff2a3d" stroke-opacity="0.4"/>
+
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="730" y2="468"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="792.35" y2="504"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="792.35" y2="576"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="730" y2="612"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="667.65" y2="576"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="667.65" y2="504"/>
+
+  <circle class="node pulse" cx="730" cy="540" r="20" filter="url(#glow)"/>
+  <text x="730" y="544" text-anchor="middle" font-family="Courier New, monospace" font-size="9" font-weight="700" fill="#f2f2f4">FOCUS</text>
+
+  <circle class="node pop" style="animation-delay:1.1s" cx="730" cy="468" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.1s" x="730" y="472">C</text>
+
+  <circle class="node pop" style="animation-delay:1.2s" cx="792.35" cy="504" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.2s" x="792.35" y="508">PYTHON</text>
+
+  <circle class="node pop" style="animation-delay:1.3s" cx="792.35" cy="576" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.3s" x="792.35" y="580">LINUX</text>
+
+  <circle class="node pop" style="animation-delay:1.4s" cx="730" cy="612" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.4s" x="730" y="616">ALGO</text>
+
+  <circle class="node pop" style="animation-delay:1.5s" cx="667.65" cy="576" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.5s" x="667.65" y="580">AI</text>
+
+  <circle class="node pop" style="animation-delay:1.6s" cx="667.65" cy="504" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.6s" x="667.65" y="500" style2="">VIDEO</text>
+  <text class="fnode pop" style="animation-delay:1.6s;font-size:8px" x="667.65" y="512">EDITING</text>
+
+  <!-- CARD 5: PHILOSOPHY -->
+  <rect class="card" x="40" y="670" width="920" height="120" rx="10" style="animation-delay:2s"/>
+  <text class="h in" x="62" y="700" style="animation-delay:1.0s">&#9670; PHILOSOPHY</text>
+  <text class="quote in" x="62" y="742" style="animation-delay:1.2s">&#8220;Know what the machine does, then make it do more.&#8221;</text>
+  <text class="small in" x="62" y="772" style="animation-delay:1.4s">Strong foundations first. Tools change, the principles stay.</text>
+
+  <text class="small in" x="500" y="830" text-anchor="middle" style="animation-delay:1.6s">&#9670; FORGING ONE PROJECT AT A TIME &#9670;</text>
+  <rect class="cur" x="812" y="818" width="9" height="16" fill="#ff2a3d"/>
+</svg>
