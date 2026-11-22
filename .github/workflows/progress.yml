@@ -1,0 +1,41 @@
+name: progress
+
+on:
+  repository_dispatch:
+    types: [project-pushed]   # sent instantly by the hook Worker when you push a project
+  workflow_dispatch:           # "Run workflow" button
+  schedule:
+    - cron: "41 * * * *"       # backup: every hour
+  push:
+    paths:
+      - "projects-config.json"
+      - "scripts/gen_progress.py"
+      - ".github/workflows/progress.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-commits
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Redraw progress from your repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/gen_progress.py
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects.json assets/forging.svg assets/progress.svg assets/project-map-v2.svg
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: update progress"
+          git pull --rebase && git push

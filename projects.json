@@ -1,0 +1,41 @@
+{
+  "user": "ael-guer",
+  "order": [
+    "libft",
+    "ft_printf",
+    "get_next_line",
+    "push_swap",
+    "born2beroot",
+    "python_piscine",
+    "a-maze-ing",
+    "fly-in",
+    "codexion",
+    "call_me_maybe",
+    "exam_rank_02",
+    "exam_rank_03",
+    "exam_rank_04",
+    "rag_against_the_machine",
+    "netpractice",
+    "pac-man",
+    "agent_smith",
+    "exam_rank_05",
+    "inception",
+    "answer_protocol",
+    "ft_transcendence",
+    "exam_rank_06",
+    "42_collaborative_resume"
+  ],
+  "done": [
+    "libft",
+    "ft_printf"
+  ],
+  "current": "get_next_line",
+  "labs": {
+    "libft": "https://ael-guer-labs.ael-guer.workers.dev/libft/",
+    "ft_printf": "https://ael-guer-labs.ael-guer.workers.dev/ft_printf/"
+  },
+  "repos": {
+    "libft": "https://github.com/ael-guer/libft",
+    "ft_printf": "https://github.com/ael-guer/ft_printf"
+  }
+}
