@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://ael-guer.github.io"><img src="assets/avatar.svg" width="260" alt="ael-guer, click to enter"/></a>
+  <a href="https://ael-guer.github.io"><img src="assets/avatar.svg" width="260" alt="CLICK HERE, open ael-guer profile"/></a>
 </p>
 
 <p align="center">

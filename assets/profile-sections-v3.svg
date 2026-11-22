@@ -73,15 +73,16 @@
   <rect class="card" x="520" y="140" width="440" height="230" rx="10" style="animation-delay:0.5s"/>
   <text class="h in" x="542" y="168" style="animation-delay:0.6s">&#9670; TECH STACK</text>
   <line x1="542" y1="180" x2="938" y2="180" stroke="#ff2a3d" stroke-opacity="0.4"/>
-  <g class="pop" style="animation-delay:0.8s"><g class="float"><rect class="pill" x="542" y="200" width="70" height="34" rx="17"/><text class="pilltxt" x="577" y="222">C</text></g></g>
-  <g class="pop" style="animation-delay:0.9s"><g class="float"><rect class="pill" x="622" y="200" width="100" height="34" rx="17"/><text class="pilltxt" x="672" y="222">Python</text></g></g>
-  <g class="pop" style="animation-delay:1.0s"><g class="float"><rect class="pill" x="732" y="200" width="84" height="34" rx="17"/><text class="pilltxt" x="774" y="222">Linux</text></g></g>
-  <g class="pop" style="animation-delay:1.1s"><g class="float"><rect class="pill" x="826" y="200" width="64" height="34" rx="17"/><text class="pilltxt" x="858" y="222">Git</text></g></g>
-  <g class="pop" style="animation-delay:1.2s"><g class="float"><rect class="pill" x="542" y="246" width="64" height="34" rx="17"/><text class="pilltxt" x="574" y="268">AI</text></g></g>
-  <g class="pop" style="animation-delay:1.3s"><g class="float"><rect class="pill" x="616" y="246" width="90" height="34" rx="17"/><text class="pilltxt" x="661" y="268">Design</text></g></g>
-  <g class="pop" style="animation-delay:1.4s"><g class="float"><rect class="pill" x="716" y="246" width="152" height="34" rx="17"/><text class="pilltxt" x="792" y="268">Video editing</text></g></g>
-  <text class="small in" x="542" y="318" style="animation-delay:1.7s">tools I use to build, see, and edit</text>
-  <text class="small in" x="542" y="340" style="animation-delay:1.8s">(code, systems, design, and video)</text>
+  <g class="pop" style="animation-delay:1.4s"><g class="float"><rect class="pill" x="542" y="200" width="34" height="34" rx="17"/><text class="pilltxt" x="559" y="222">C</text></g></g>
+  <g class="pop" style="animation-delay:1.5s"><g class="float"><rect class="pill" x="586" y="200" width="73" height="34" rx="17"/><text class="pilltxt" x="622.5" y="222">Python</text></g></g>
+  <g class="pop" style="animation-delay:1.6s"><g class="float"><rect class="pill" x="669" y="200" width="65" height="34" rx="17"/><text class="pilltxt" x="701.5" y="222">Linux</text></g></g>
+  <g class="pop" style="animation-delay:1.7s"><g class="float"><rect class="pill" x="744" y="200" width="49" height="34" rx="17"/><text class="pilltxt" x="768.5" y="222">Git</text></g></g>
+  <g class="pop" style="animation-delay:1.8s"><g class="float"><rect class="pill" x="803" y="200" width="42" height="34" rx="17"/><text class="pilltxt" x="824" y="222">AI</text></g></g>
+  <g class="pop" style="animation-delay:1.9s"><g class="float"><rect class="pill" x="855" y="200" width="73" height="34" rx="17"/><text class="pilltxt" x="891.5" y="222">Design</text></g></g>
+  <g class="pop" style="animation-delay:2.0s"><g class="float"><rect class="pill" x="542" y="246" width="127" height="34" rx="17"/><text class="pilltxt" x="605.5" y="268">Video editing</text></g></g>
+  <g class="pop" style="animation-delay:2.1s"><g class="float"><rect class="pill" x="679" y="246" width="127" height="34" rx="17"/><text class="pilltxt" x="742.5" y="268">Cybersecurity</text></g></g>
+  <g class="pop" style="animation-delay:2.2s"><g class="float"><rect class="pill" x="816" y="246" width="104" height="34" rx="17"/><text class="pilltxt" x="868" y="268">Pentesting</text></g></g>
+  <text class="small in" x="542" y="352" style="animation-delay:1.9s">tools I use to build, see, and edit</text>
 
   <!-- CARD 3: EDUCATION (timeline) -->
   <rect class="card" x="40" y="400" width="440" height="250" rx="10" style="animation-delay:1s"/>
@@ -105,39 +106,40 @@
   <text class="bt in" x="104" y="612" style="animation-delay:1.5s">1337 · 42 Network</text>
   <text class="small in" x="104" y="630" style="animation-delay:1.6s">Tronc commun, promotion 2026</text>
 
-  <!-- CARD 4: FOCUS AREAS (6 nodes on one circle, radius 72, around the center) -->
+  <!-- CARD 4: FOCUS AREAS (8 nodes on one circle, radius 72, around the center) -->
   <rect class="card" x="520" y="400" width="440" height="250" rx="10" style="animation-delay:1.5s"/>
   <text class="h in" x="542" y="428" style="animation-delay:0.8s">&#9670; FOCUS AREAS</text>
   <line x1="542" y1="440" x2="938" y2="440" stroke="#ff2a3d" stroke-opacity="0.4"/>
 
-  <line class="ln" pathLength="1" x1="730" y1="540" x2="730" y2="468"/>
-  <line class="ln" pathLength="1" x1="730" y1="540" x2="792.35" y2="504"/>
-  <line class="ln" pathLength="1" x1="730" y1="540" x2="792.35" y2="576"/>
-  <line class="ln" pathLength="1" x1="730" y1="540" x2="730" y2="612"/>
-  <line class="ln" pathLength="1" x1="730" y1="540" x2="667.65" y2="576"/>
-  <line class="ln" pathLength="1" x1="730" y1="540" x2="667.65" y2="504"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="730.0" y2="468.0"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="780.91" y2="489.09"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="802.0" y2="540.0"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="780.91" y2="590.91"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="730.0" y2="612.0"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="679.09" y2="590.91"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="658.0" y2="540.0"/>
+  <line class="ln" pathLength="1" x1="730" y1="540" x2="679.09" y2="489.09"/>
 
   <circle class="node pulse" cx="730" cy="540" r="20" filter="url(#glow)"/>
   <text x="730" y="544" text-anchor="middle" font-family="Courier New, monospace" font-size="9" font-weight="700" fill="#f2f2f4">FOCUS</text>
 
-  <circle class="node pop" style="animation-delay:1.1s" cx="730" cy="468" r="22"/>
-  <text class="fnode pop" style="animation-delay:1.1s" x="730" y="472">C</text>
-
-  <circle class="node pop" style="animation-delay:1.2s" cx="792.35" cy="504" r="22"/>
-  <text class="fnode pop" style="animation-delay:1.2s" x="792.35" y="508">PYTHON</text>
-
-  <circle class="node pop" style="animation-delay:1.3s" cx="792.35" cy="576" r="22"/>
-  <text class="fnode pop" style="animation-delay:1.3s" x="792.35" y="580">LINUX</text>
-
-  <circle class="node pop" style="animation-delay:1.4s" cx="730" cy="612" r="22"/>
-  <text class="fnode pop" style="animation-delay:1.4s" x="730" y="616">ALGO</text>
-
-  <circle class="node pop" style="animation-delay:1.5s" cx="667.65" cy="576" r="22"/>
-  <text class="fnode pop" style="animation-delay:1.5s" x="667.65" y="580">AI</text>
-
-  <circle class="node pop" style="animation-delay:1.6s" cx="667.65" cy="504" r="22"/>
-  <text class="fnode pop" style="animation-delay:1.6s" x="667.65" y="500" style2="">VIDEO</text>
-  <text class="fnode pop" style="animation-delay:1.6s;font-size:8px" x="667.65" y="512">EDITING</text>
+  <circle class="node pop" style="animation-delay:1.1s" cx="730.0" cy="468.0" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.1s;" x="730.0" y="472.0">C</text>
+  <circle class="node pop" style="animation-delay:1.18s" cx="780.91" cy="489.09" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.18s;" x="780.91" y="493.09">PYTHON</text>
+  <circle class="node pop" style="animation-delay:1.26s" cx="802.0" cy="540.0" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.26s;" x="802.0" y="544.0">LINUX</text>
+  <circle class="node pop" style="animation-delay:1.34s" cx="780.91" cy="590.91" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.34s;" x="780.91" y="594.91">CYBER</text>
+  <circle class="node pop" style="animation-delay:1.42s" cx="730.0" cy="612.0" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.42s;font-size:8.5px;" x="730.0" y="616.0">PENTEST</text>
+  <circle class="node pop" style="animation-delay:1.5s" cx="679.09" cy="590.91" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.5s;" x="679.09" y="594.91">ALGO</text>
+  <circle class="node pop" style="animation-delay:1.58s" cx="658.0" cy="540.0" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.58s;" x="658.0" y="544.0">AI</text>
+  <circle class="node pop" style="animation-delay:1.66s" cx="679.09" cy="489.09" r="22"/>
+  <text class="fnode pop" style="animation-delay:1.66s;font-size:8px" x="679.09" y="486.09">VIDEO</text>
+  <text class="fnode pop" style="animation-delay:1.66s;font-size:8px" x="679.09" y="497.09">EDITING</text>
 
   <!-- CARD 5: PHILOSOPHY -->
   <rect class="card" x="40" y="670" width="920" height="120" rx="10" style="animation-delay:2s"/>
