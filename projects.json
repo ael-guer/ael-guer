@@ -27,7 +27,8 @@
   ],
   "done": [
     "libft",
-    "ft_printf"
+    "ft_printf",
+    "push_swap"
   ],
   "current": "get_next_line",
   "labs": {
@@ -36,6 +37,7 @@
   },
   "repos": {
     "libft": "https://github.com/ael-guer/libft",
-    "ft_printf": "https://github.com/ael-guer/ft_printf"
+    "ft_printf": "https://github.com/ael-guer/ft_printf",
+    "push_swap": "https://github.com/ael-guer/push_swap"
   }
 }
