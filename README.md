@@ -1,4 +1,10 @@
 <p align="center">
+  <a href="https://ael-guer.github.io"><img src="assets/avatar.svg" width="220" alt="AEL-GUER animated avatar"/></a>
+</p>
+
+<p align="center"><a href="https://ael-guer.github.io">✨ Open my hover profile</a></p>
+
+<p align="center">
   <img src="assets/header-v2.svg" alt="Ali El-Guerch, AEL-GUER, 1337 header" width="100%"/>
 </p>
 
