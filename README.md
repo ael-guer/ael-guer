@@ -7,6 +7,10 @@
 </p>
 
 <p align="center">
+  <img src="assets/forging.svg" alt="Now loading: get_next_line" width="80%"/>
+</p>
+
+<p align="center">
   <img src="assets/profile-sections-v3.svg" alt="About, tech stack, formation, focus areas and philosophy" width="100%"/>
 </p>
 
@@ -14,6 +18,20 @@
 
 <p align="center">
   <img src="assets/project-map-v2.svg" alt="Project map: 2 cleared, 21 to conquer" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/progress.svg" alt="Common core: 2 of 23 cleared" width="100%"/>
+</p>
+
+## ⚔️ Battle Stats
+
+<p align="center">
+  <img src="assets/stats.svg" alt="Battle stats: contributions, streaks, top languages" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/embers-graph.svg" alt="Contribution graph drawn as embers" width="100%"/>
 </p>
 
 ## 📫 Contact
