@@ -19,28 +19,28 @@
   <rect x="1" y="1" width="898" height="268" rx="12" fill="#0c0709" stroke="#ff2a3d" stroke-opacity="0.6"/>
   <text class="t" x="34" y="44">&#9670; BATTLE STATS</text>
   <line x1="34" y1="58" x2="866" y2="58" stroke="#ff2a3d" stroke-opacity="0.4"/>
-  <g class="in" style="animation-delay:0.20s"><text class="v" x="34" y="104">9</text><text class="k" x="34" y="126">CONTRIBUTIONS</text></g>
+  <g class="in" style="animation-delay:0.20s"><text class="v" x="34" y="104">10</text><text class="k" x="34" y="126">CONTRIBUTIONS</text></g>
   <g class="in" style="animation-delay:0.32s"><text class="v" x="174" y="104">5</text><text class="k" x="174" y="126">COMMITS</text></g>
   <g class="in" style="animation-delay:0.44s"><text class="v" x="314" y="104">1d</text><text class="k" x="314" y="126">STREAK</text></g>
   <g class="in" style="animation-delay:0.56s"><text class="v" x="34" y="184">1d</text><text class="k" x="34" y="206">LONGEST</text></g>
-  <g class="in" style="animation-delay:0.68s"><text class="v" x="174" y="184">4</text><text class="k" x="174" y="206">REPOS</text></g>
+  <g class="in" style="animation-delay:0.68s"><text class="v" x="174" y="184">5</text><text class="k" x="174" y="206">REPOS</text></g>
   <g class="in" style="animation-delay:0.80s"><text class="v" x="314" y="184">0</text><text class="k" x="314" y="206">STARS</text></g>
   <text class="k" x="480" y="90" style="fill:#ff2a3d;font-weight:700;letter-spacing:3px">TOP LANGUAGES</text>
   <text class="l" x="480" y="120">C</text>
   <rect x="600" y="108" width="230" height="14" rx="3" fill="#14060a" stroke="#8a0f16"/>
-  <rect class="bar" style="animation-delay:0.30s" x="600" y="108" width="164.4" height="14" rx="3" fill="#ff2a3d"/>
-  <text class="k" x="866" y="120" text-anchor="end">71%</text>
-  <text class="l" x="480" y="150">Vim Script</text>
+  <rect class="bar" style="animation-delay:0.30s" x="600" y="108" width="140.9" height="14" rx="3" fill="#ff2a3d"/>
+  <text class="k" x="866" y="120" text-anchor="end">61%</text>
+  <text class="l" x="480" y="150">Python</text>
   <rect x="600" y="138" width="230" height="14" rx="3" fill="#14060a" stroke="#8a0f16"/>
-  <rect class="bar" style="animation-delay:0.45s" x="600" y="138" width="37.3" height="14" rx="3" fill="#e0213a"/>
-  <text class="k" x="866" y="150" text-anchor="end">16%</text>
-  <text class="l" x="480" y="180">Python</text>
+  <rect class="bar" style="animation-delay:0.45s" x="600" y="138" width="55.1" height="14" rx="3" fill="#e0213a"/>
+  <text class="k" x="866" y="150" text-anchor="end">24%</text>
+  <text class="l" x="480" y="180">Vim Script</text>
   <rect x="600" y="168" width="230" height="14" rx="3" fill="#14060a" stroke="#8a0f16"/>
-  <rect class="bar" style="animation-delay:0.60s" x="600" y="168" width="25.3" height="14" rx="3" fill="#b81a2c"/>
-  <text class="k" x="866" y="180" text-anchor="end">11%</text>
+  <rect class="bar" style="animation-delay:0.60s" x="600" y="168" width="31.5" height="14" rx="3" fill="#b81a2c"/>
+  <text class="k" x="866" y="180" text-anchor="end">14%</text>
   <text class="l" x="480" y="210">Makefile</text>
   <rect x="600" y="198" width="230" height="14" rx="3" fill="#14060a" stroke="#8a0f16"/>
-  <rect class="bar" style="animation-delay:0.75s" x="600" y="198" width="3.0" height="14" rx="3" fill="#8a0f16"/>
+  <rect class="bar" style="animation-delay:0.75s" x="600" y="198" width="2.5" height="14" rx="3" fill="#8a0f16"/>
   <text class="k" x="866" y="210" text-anchor="end">1%</text>
-  <text class="k" x="866" y="254" text-anchor="end" style="font-size:11px">updated 2026-11-22</text>
+  <text class="k" x="866" y="254" text-anchor="end" style="font-size:11px">updated 2026-11-23</text>
 </svg>
