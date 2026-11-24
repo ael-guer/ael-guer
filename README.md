@@ -24,6 +24,20 @@
   <img src="assets/progress.svg" alt="Common core: 2 of 23 cleared" width="100%"/>
 </p>
 
+<!-- PATH-LINKS:START -->
+_Filled in automatically by the progress Action._
+<!-- PATH-LINKS:END -->
+
+## 🔥 Unleashing my power
+
+<p align="center">
+  <img src="assets/power.svg" alt="Unleashing my power: my own projects" width="100%"/>
+</p>
+
+<!-- POWER:START -->
+_Filled in automatically by the progress Action._
+<!-- POWER:END -->
+
 ## ⚔️ Battle Stats
 
 <p align="center">

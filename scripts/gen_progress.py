@@ -1,13 +1,21 @@
-"""Reads which projects you pushed (public repos named like the projects) and redraws:
-   projects.json, assets/forging.svg (NOW LOADING), assets/progress.svg, assets/project-map-v2.svg.
-   Run by the progress Action. Local test: python3 scripts/gen_progress.py --repos libft,ft_printf"""
-import json, math, os, sys, urllib.request
+"""Reads your public repos and redraws everything on the profile:
+   - 1337 projects (repos named like the projects in "order"): projects.json, NOW LOADING board, progress bar, project map
+   - labs: a repo whose Website field points to your labs site gets a LAB link (any other Website link = LIVE)
+   - your own projects (every other public repo, minus "exclude"): assets/power.svg + the "Unleashing my power" table
+   - README tables between the <!-- ...:START --> / <!-- ...:END --> markers
+   Run by the progress Action. Local tests:
+     python3 scripts/gen_progress.py --repos libft,ft_printf          (names only)
+     python3 scripts/gen_progress.py --fake tests/fake-repos.json     (full repo objects, like the API)"""
+import json, math, os, re, sys, urllib.request
+from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..")
 ASSETS = os.path.join(ROOT, "assets")
 CFG = json.load(open(os.path.join(ROOT, "projects-config.json"), encoding="utf-8"))
 USER, ORDER, LABS = CFG["user"], CFG["order"], CFG.get("labs", {})
+LABS_BASE = CFG.get("labs_base", "https://ael-guer-labs.ael-guer.workers.dev").rstrip("/")
+EXCLUDE = {n.lower() for n in CFG.get("exclude", [])} | {USER.lower()}
 
 def font_face():
     try:
@@ -20,18 +28,33 @@ def font_face():
 FONT = "'AnonPro', 'Courier New', monospace"
 
 def public_repos():
-    if "--repos" in sys.argv:                                   # local test without the API
-        return {n.strip().lower() for n in sys.argv[sys.argv.index("--repos") + 1].split(",") if n.strip()}
-    names, page = set(), 1
+    """Public, non-fork repos as dicts: name, description, language, homepage, pushed_at, html_url."""
+    if "--repos" in sys.argv:                                   # local test without the API (names only)
+        names = [n.strip() for n in sys.argv[sys.argv.index("--repos") + 1].split(",") if n.strip()]
+        return [{"name": n} for n in names]
+    if "--fake" in sys.argv:                                    # local test with full repo objects
+        return [r for r in json.load(open(sys.argv[sys.argv.index("--fake") + 1], encoding="utf-8"))
+                if not r.get("private") and not r.get("fork")]
+    out, page = [], 1
     while True:
         req = urllib.request.Request(f"https://api.github.com/users/{USER}/repos?per_page=100&type=owner&page={page}",
                                      headers={"Accept": "application/vnd.github+json", "User-Agent": "progress-bot",
                                               **({"Authorization": "Bearer " + os.environ["GITHUB_TOKEN"]} if os.environ.get("GITHUB_TOKEN") else {})})
         with urllib.request.urlopen(req, timeout=30) as r:
             batch = json.load(r)
-        names |= {repo["name"].lower() for repo in batch if not repo.get("private") and not repo.get("fork")}
-        if len(batch) < 100: return names
+        out += [repo for repo in batch if not repo.get("private") and not repo.get("fork")]
+        if len(batch) < 100: return out
         page += 1
+
+def link_kind(url):
+    """Website field -> ('lab', url) if it points to the labs site, ('live', url) for anything else, (None, None) if empty."""
+    url = (url or "").strip()
+    if not url: return None, None
+    if not re.match(r"^https?://", url): url = "https://" + url
+    return ("lab", url) if url.startswith(LABS_BASE) else ("live", url)
+
+def esc(t):
+    return (t or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 # ---------------- LED board: NOW LOADING: <project> ----------------
 F = {
@@ -198,20 +221,178 @@ def project_map(done_idx, next_idx):
 </svg>
 '''
 
+# ---------------- UNLEASHING MY POWER: your own projects ----------------
+LANG_COLORS = {"C": "#a8b9cc", "C++": "#f34b7d", "Python": "#3572A5", "JavaScript": "#f1e05a", "TypeScript": "#3178c6",
+               "HTML": "#e34c26", "CSS": "#663399", "Shell": "#89e051", "Go": "#00ADD8", "Rust": "#dea584", "Java": "#b07219",
+               "Makefile": "#427819", "Lua": "#000080", "PHP": "#4F5D95", "Dart": "#00B4AB", "Kotlin": "#A97BFF"}
+
+def cut(t, n):
+    t = (t or "").strip()
+    return t if len(t) <= n else t[:n - 1].rstrip() + "…"
+
+def wrap2(t, n):
+    """description on up to 2 lines of n characters"""
+    words, lines, cur, used = (t or "").split(), [], "", 0
+    for w in words:
+        if len(cur) + len(w) + (1 if cur else 0) <= n:
+            cur = (cur + " " + w).strip(); used += 1
+        else:
+            lines.append(cur); cur = w; used += 1
+            if len(lines) == 2: used -= 1; cur = ""; break
+    if cur and len(lines) < 2: lines.append(cur)
+    if used < len(words) and lines: lines[-1] = cut(lines[-1] + " …", n)
+    return [cut(l, n) for l in lines[:2]]
+
+def power(personal):
+    W, CW, CH, GAP, X0, TOP = 1000, 300, 128, 20, 30, 104
+    shown = personal[:6]
+    rows = max(1, math.ceil(len(shown) / 3))
+    H = TOP + rows * (CH + GAP) + (40 if len(personal) > 6 else 16)
+    cards = []
+    for i, p in enumerate(shown):
+        in_row = min(3, len(shown) - (i // 3) * 3)                 # a short last row is centred
+        x = X0 + (3 - in_row) * (CW + GAP) / 2 + (i % 3) * (CW + GAP)
+        y = TOP + (i // 3) * (CH + GAP)
+        lang = p.get("language") or ""
+        col = LANG_COLORS.get(lang, "#8b8b96")
+        d = wrap2(p.get("description") or "no description yet", 34)
+        badges, bx = [], x + CW - 14
+        for label, on in (("&#9650; LIVE", p.get("live")), ("&#9670; LAB", p.get("lab"))):
+            if not on: continue
+            w = 62
+            badges.append(f'<rect x="{bx - w}" y="{y + CH - 32}" width="{w}" height="20" rx="10" fill="#2a0709" stroke="#ff2a3d"/>'
+                          f'<text x="{bx - w / 2}" y="{y + CH - 18}" class="bd" text-anchor="middle">{label}</text>')
+            bx -= w + 8
+        when = (p.get("pushed_at") or "")[:10]
+        d0 = esc(d[0]) if d else ""
+        d1 = esc(d[1]) if len(d) > 1 else ""
+        meta = esc(lang or "code") + (" · " + when if when else "")
+        cards.append(
+            f'  <g class="card" style="animation-delay:{i * 0.12:.2f}s">\n'
+            f'    <rect x="{x}" y="{y}" width="{CW}" height="{CH}" rx="10" fill="#0c0709" stroke="#8a0f16" stroke-width="1.5"/>\n'
+            f'    <rect class="run" x="{x}" y="{y}" width="{CW}" height="{CH}" rx="10" fill="none" stroke="#ff2a3d" stroke-width="2" style="animation-delay:{i * 0.7:.1f}s"/>\n'
+            f'    <text x="{x + 16}" y="{y + 30}" class="nm">{esc(cut(p["name"], 24))}</text>\n'
+            f'    <text x="{x + 16}" y="{y + 54}" class="ds">{d0}</text>\n'
+            f'    <text x="{x + 16}" y="{y + 72}" class="ds">{d1}</text>\n'
+            f'    <circle cx="{x + 21}" cy="{y + CH - 22}" r="5" fill="{col}"/>\n'
+            f'    <text x="{x + 32}" y="{y + CH - 18}" class="lg">{meta}</text>\n'
+            f'    {"".join(badges)}\n'
+            f'  </g>')
+    if not shown:
+        cards.append(f'  <text x="{W / 2}" y="{TOP + 52}" text-anchor="middle" class="sleep">THE POWER SLEEPS</text>\n'
+                     f'  <text x="{W / 2}" y="{TOP + 84}" text-anchor="middle" class="lg">push a project of your own to awaken it</text>')
+    more = (f'<text x="{W / 2}" y="{H - 16}" text-anchor="middle" class="lg">+ {len(personal) - 6} more in the table below</text>'
+            if len(personal) > 6 else "")
+    embers = "".join(f'<circle class="em" cx="{60 + i * 110}" cy="{H + 5}" r="{1.6 + (i % 3) * 0.6:.1f}" fill="#ff2a3d" '
+                     f'style="animation-delay:{(i * 0.9) % 5:.1f}s"/>' for i in range(9))
+    n = len(personal)
+    css = (
+        f"    {font_face()}text {{ font-family: {FONT}; }}\n"
+        "    .tt { font-size: 30px; font-weight: 700; fill: #f2f2f4; letter-spacing: 6px; }\n"
+        "    .st { font-size: 13px; fill: #8b8b96; letter-spacing: 3px; }\n"
+        "    .nm { font-size: 19px; font-weight: 700; fill: #f2f2f4; }\n"
+        "    .ds { font-size: 13px; fill: #b9b2a6; }\n"
+        "    .lg { font-size: 12px; fill: #8b8b96; letter-spacing: 1px; }\n"
+        "    .bd { font-size: 10px; font-weight: 700; fill: #ffd7da; letter-spacing: 1px; }\n"
+        "    .sleep { font-size: 26px; font-weight: 700; fill: #ff2a3d; letter-spacing: 8px; animation: pulse 2.4s ease-in-out infinite; }\n"
+        "    .flick { animation: flick 4s linear infinite; }\n"
+        "    .card { animation: rise .7s ease-out both; }\n"
+        "    .run { stroke-dasharray: 90 760; animation: run 4.2s linear infinite; filter: url(#g); }\n"
+        "    .em { animation: up 6s linear infinite; }\n"
+        "    @keyframes rise { from { opacity: 0; transform: translateY(12px); } }\n"
+        "    @keyframes run { to { stroke-dashoffset: -850; } }\n"
+        "    @keyframes pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }\n"
+        "    @keyframes flick { 0%,92%,100% { opacity: 1; } 93% { opacity: .35; } 95% { opacity: 1; } 96% { opacity: .6; } }\n"
+        f"    @keyframes up {{ 0% {{ transform: translateY(0); opacity: .9; }} 100% {{ transform: translateY(-{H}px); opacity: 0; }} }}\n")
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Unleashing my power: {n} own projects">\n'
+        '  <defs><filter id="g" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/>'
+        '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>\n'
+        f"  <style>\n{css}  </style>\n"
+        f'  <rect width="{W}" height="{H}" rx="14" fill="#050507" stroke="#ff2a3d" stroke-opacity=".55"/>\n'
+        f"  {embers}\n"
+        f'  <text x="{W / 2}" y="50" text-anchor="middle" class="tt flick" filter="url(#g)">UNLEASHING MY POWER</text>\n'
+        f'  <text x="{W / 2}" y="76" text-anchor="middle" class="st">{n} PROJECT{"" if n == 1 else "S"} FORGED OUTSIDE THE PATH</text>\n'
+        + "\n".join(cards) + f"\n  {more}\n</svg>\n")
+
+# ---------------- README tables (only the text between the markers is rewritten) ----------------
+def md(t):
+    return (t or "").replace("|", "\\|").replace("\n", " ").strip()
+
+def path_table(done, repos_url, labs):
+    if not done: return "_No project cleared yet._"
+    rows = ["| # | Project | Source | Lab |", "|:-:|---|:-:|:-:|"]
+    for p in done:
+        lab = f"[🔒 open the lab]({labs[p]})" if labs.get(p) else "—"
+        rows.append(f"| {ORDER.index(p) + 1:02d} | **{p}** | [repo]({repos_url[p]}) | {lab} |")
+    return "\n".join(rows)
+
+def power_table(personal):
+    if not personal: return "_Nothing unleashed yet._"
+    rows = ["| Project | What it is | Language | Links |", "|---|---|:-:|:-:|"]
+    for p in personal:
+        links = ([f"[repo]({p['url']})"] + ([f"[live]({p['live']})"] if p.get("live") else [])
+                 + ([f"[🔒 lab]({p['lab']})"] if p.get("lab") else []))
+        rows.append(f"| **{md(p['name'])}** | {md(p.get('description')) or '—'} | {md(p.get('language')) or '—'} | {' · '.join(links)} |")
+    return "\n".join(rows)
+
+def fill(readme, key, body):
+    start, end = f"<!-- {key}:START -->", f"<!-- {key}:END -->"
+    return re.sub(re.escape(start) + r".*?" + re.escape(end), lambda m: f"{start}\n{body}\n{end}", readme, flags=re.S)
+
+def ensure_sections(readme):
+    """first run only: add the new sections without touching anything else"""
+    if "<!-- PATH-LINKS:START -->" not in readme:
+        i = readme.find('<img src="assets/progress.svg"')
+        if i != -1:
+            j = readme.find("</p>", i) + len("</p>")
+            readme = readme[:j] + "\n\n<!-- PATH-LINKS:START -->\n<!-- PATH-LINKS:END -->" + readme[j:]
+        else:
+            readme += "\n\n<!-- PATH-LINKS:START -->\n<!-- PATH-LINKS:END -->\n"
+    if "<!-- POWER:START -->" not in readme:
+        block = ('## 🔥 Unleashing my power\n\n<p align="center">\n  <img src="assets/power.svg" alt="Unleashing my power: my own projects" width="100%"/>\n</p>\n\n'
+                 "<!-- POWER:START -->\n<!-- POWER:END -->\n\n")
+        i = readme.find("## ⚔️ Battle Stats")
+        readme = readme[:i] + block + readme[i:] if i != -1 else readme + "\n\n" + block
+    return readme
+
 def main():
     repos = public_repos()
-    done = [p for p in ORDER if p.lower() in repos]
-    current = next((p for p in ORDER if p.lower() not in repos), None)
-    state = {"user": USER, "order": ORDER, "done": done, "current": current, "labs": LABS,
-             "repos": {p: f"https://github.com/{USER}/{p}" for p in done}}
+    by_name = {r["name"].lower(): r for r in repos}
+    order_low = {p.lower() for p in ORDER}
+    done = [p for p in ORDER if p.lower() in by_name]
+    current = next((p for p in ORDER if p.lower() not in by_name), None)
+    repos_url = {p: by_name[p.lower()].get("html_url") or f"https://github.com/{USER}/{p}" for p in done}
+    labs, live = {}, {}
+    for p in done:                                              # 1337 projects: Website field first, config "labs" as a fallback
+        kind, url = link_kind(by_name[p.lower()].get("homepage"))
+        if kind == "lab": labs[p] = url
+        elif kind == "live": live[p] = url
+        if p not in labs and LABS.get(p): labs[p] = LABS[p]
+    personal = []
+    for r in repos:                                             # every other public repo = your own project
+        low = r["name"].lower()
+        if low in order_low or low in EXCLUDE: continue
+        kind, url = link_kind(r.get("homepage"))
+        personal.append({"name": r["name"], "description": r.get("description") or "", "language": r.get("language") or "",
+                         "url": r.get("html_url") or f"https://github.com/{USER}/{r['name']}", "pushed_at": r.get("pushed_at") or "",
+                         "lab": url if kind == "lab" else None, "live": url if kind == "live" else None})
+    personal.sort(key=lambda p: p["pushed_at"], reverse=True)
+    state = {"user": USER, "order": ORDER, "done": done, "current": current, "labs": labs, "live": live,
+             "repos": repos_url, "personal": personal}
     def write(path, text):
         full = os.path.join(ROOT, path); old = open(full, encoding="utf-8").read() if os.path.exists(full) else None
         if old != text: open(full, "w", encoding="utf-8").write(text); print("updated", path)
-    write("projects.json", json.dumps(state, indent=2) + "\n")
+    write("projects.json", json.dumps(state, indent=2, ensure_ascii=False) + "\n")
     write("assets/forging.svg", led(f"NOW LOADING: {current}" if current else "ALL CLEARED!"))
     write("assets/progress.svg", progress(done, current))
     write("assets/project-map-v2.svg", project_map({ORDER.index(p) for p in done}, ORDER.index(current) if current else -1))
-    print(f"done: {done} | now loading: {current}")
+    write("assets/power.svg", power(personal))
+    readme = ensure_sections(open(os.path.join(ROOT, "README.md"), encoding="utf-8").read())
+    readme = fill(readme, "PATH-LINKS", path_table(done, repos_url, labs))
+    readme = fill(readme, "POWER", power_table(personal))
+    write("README.md", readme)
+    print(f"done: {done} | now loading: {current} | labs: {list(labs)} | own projects: {[p['name'] for p in personal]}")
 
 if __name__ == "__main__":
     main()
