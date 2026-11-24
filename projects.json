@@ -35,9 +35,21 @@
     "libft": "https://ael-guer-labs.ael-guer.workers.dev/libft/",
     "ft_printf": "https://ael-guer-labs.ael-guer.workers.dev/ft_printf/"
   },
+  "live": {},
   "repos": {
     "libft": "https://github.com/ael-guer/libft",
     "ft_printf": "https://github.com/ael-guer/ft_printf",
     "push_swap": "https://github.com/ael-guer/push_swap"
-  }
+  },
+  "personal": [
+    {
+      "name": "vim_customisation",
+      "description": "",
+      "language": "Vim Script",
+      "url": "https://github.com/ael-guer/vim_customisation",
+      "pushed_at": "2026-05-10T12:35:34Z",
+      "lab": null,
+      "live": null
+    }
+  ]
 }

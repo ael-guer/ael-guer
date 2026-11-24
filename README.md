@@ -25,7 +25,11 @@
 </p>
 
 <!-- PATH-LINKS:START -->
-_Filled in automatically by the progress Action._
+| # | Project | Source | Lab |
+|:-:|---|:-:|:-:|
+| 01 | **libft** | [repo](https://github.com/ael-guer/libft) | [🔒 open the lab](https://ael-guer-labs.ael-guer.workers.dev/libft/) |
+| 02 | **ft_printf** | [repo](https://github.com/ael-guer/ft_printf) | [🔒 open the lab](https://ael-guer-labs.ael-guer.workers.dev/ft_printf/) |
+| 04 | **push_swap** | [repo](https://github.com/ael-guer/push_swap) | — |
 <!-- PATH-LINKS:END -->
 
 ## 🔥 Unleashing my power
@@ -35,7 +39,9 @@ _Filled in automatically by the progress Action._
 </p>
 
 <!-- POWER:START -->
-_Filled in automatically by the progress Action._
+| Project | What it is | Language | Links |
+|---|---|:-:|:-:|
+| **vim_customisation** | — | Vim Script | [repo](https://github.com/ael-guer/vim_customisation) |
 <!-- POWER:END -->
 
 ## ⚔️ Battle Stats
