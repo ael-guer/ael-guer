@@ -21,7 +21,7 @@
   <line x1="34" y1="58" x2="866" y2="58" stroke="#ff2a3d" stroke-opacity="0.4"/>
   <g class="in" style="animation-delay:0.20s"><text class="v" x="34" y="104">10</text><text class="k" x="34" y="126">CONTRIBUTIONS</text></g>
   <g class="in" style="animation-delay:0.32s"><text class="v" x="174" y="104">5</text><text class="k" x="174" y="126">COMMITS</text></g>
-  <g class="in" style="animation-delay:0.44s"><text class="v" x="314" y="104">1d</text><text class="k" x="314" y="126">STREAK</text></g>
+  <g class="in" style="animation-delay:0.44s"><text class="v" x="314" y="104">0d</text><text class="k" x="314" y="126">STREAK</text></g>
   <g class="in" style="animation-delay:0.56s"><text class="v" x="34" y="184">1d</text><text class="k" x="34" y="206">LONGEST</text></g>
   <g class="in" style="animation-delay:0.68s"><text class="v" x="174" y="184">5</text><text class="k" x="174" y="206">REPOS</text></g>
   <g class="in" style="animation-delay:0.80s"><text class="v" x="314" y="184">0</text><text class="k" x="314" y="206">STARS</text></g>
@@ -42,5 +42,5 @@
   <rect x="600" y="198" width="230" height="14" rx="3" fill="#14060a" stroke="#8a0f16"/>
   <rect class="bar" style="animation-delay:0.75s" x="600" y="198" width="2.5" height="14" rx="3" fill="#8a0f16"/>
   <text class="k" x="866" y="210" text-anchor="end">1%</text>
-  <text class="k" x="866" y="254" text-anchor="end" style="font-size:11px">updated 2026-11-23</text>
+  <text class="k" x="866" y="254" text-anchor="end" style="font-size:11px">updated 2026-11-24</text>
 </svg>
