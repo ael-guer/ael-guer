@@ -42,5 +42,5 @@
   <rect x="600" y="198" width="230" height="14" rx="3" fill="#14060a" stroke="#8a0f16"/>
   <rect class="bar" style="animation-delay:0.75s" x="600" y="198" width="2.3" height="14" rx="3" fill="#8a0f16"/>
   <text class="k" x="866" y="210" text-anchor="end">1%</text>
-  <text class="k" x="866" y="254" text-anchor="end" style="font-size:11px">updated 2026-11-27</text>
+  <text class="k" x="866" y="254" text-anchor="end" style="font-size:11px">updated 2026-11-28</text>
 </svg>
